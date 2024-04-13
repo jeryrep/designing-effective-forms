@@ -16,25 +16,63 @@
 <body>
     <div class="container">
         <h1>Uzupełnij formularz</h1>
-        <form id="form">
-            <div class="mb-3">
-                <label for="firstName" class="form-label">Imię</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Wpisz imię" required>
+        <form id="form" onkeydown="submitForm(event)">
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Imię</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Wpisz imię" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Nazwisko</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Wpisz nazwisko" required>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
-                <label for="lastName" class="form-label">Nazwisko</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Wpisz nazwisko" required>
+                <label for="exampleInputEmail1" class="form-label">Adres e-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Wpisz e-mail">
             </div>
-            <div class="mb-3">
-                <label for="street" class="form-label">Ulica</label>
-                <input type="text" class="form-control" id="street" placeholder="Wpisz ulicę" required>
-            </div>
-            <div class="mb-3">
-                <label for="country" class="form-label">Kraj</label>
-                <select class="form-select" id="country" required>
-                    <option value="">Wybierz kraj</option>
-                    <!-- Options will be filled by JavaScript -->
-                </select>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Kraj</label>
+                        <select class="form-select" id="country" required>
+                            <option value="">Wybierz kraj</option>
+                            <!-- Options will be filled by JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="city" class="form-label">Miasto</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="city-addon">
+                                <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/location_city/default/24px.svg" alt="City Icon" width="20" height="20">
+                            </span>
+                            <input type="text" class="form-control" id="city" placeholder="Wpisz miasto" aria-describedby="city-addon" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="street" class="form-label">Ulica</label>
+                        <div class="input-group">
+                            <span class="input-group-text" id="street-addon">
+                                <img src="https://fonts.gstatic.com/s/i/short-term/release/materialsymbolsoutlined/signpost/default/24px.svg" alt="Street Icon" width="20" height="20">
+                            </span>
+                            <input type="text" class="form-control" id="street" placeholder="Wpisz ulicę" aria-describedby="street-addon" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="zipCode" class="form-label">Kod pocztowy</label>
+                        <input type="text" class="form-control" id="zipCode" placeholder="Wpisz kod pocztowy" required>
+                    </div>
+                </div>
             </div>
             <div class="row mb-3">
                 <label for="phoneNumber" class="form-label">Numer telefonu komórkowego</label>
@@ -50,40 +88,40 @@
                 </div>
             </div>
             <div class="mb-3">
-                <label for="city" class="form-label">Miasto</label>
-                <input type="text" class="form-control" id="city" placeholder="Wpisz miasto" required>
-            </div>
-            <div class="mb-3">
-                <label for="zipCode" class="form-label">Kod pocztowy</label>
-                <input type="text" class="form-control" id="zipCode" placeholder="Wpisz kod pocztowy" required>
-            </div>
-            <div class="mb-3">
                 <label for="shippingMethod" class="form-label">Rodzaj przesyłki</label>
-                <select class="form-select" id="shippingMethod" required>
-                    <option value="">Wybierz rodzaj przesyłki</option>
-                    <option value="DPD">DPD</option>
-                    <option value="InPost">InPost</option>
-                </select>
+                <div id="shippingMethod" class="btn-group" role="group" aria-label="Rodzaj przesyłki">
+                    <input type="radio" class="btn-check" name="shippingMethod" id="DPD" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="DPD">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/DPD_logo_%282015%29.svg/1280px-DPD_logo_%282015%29.svg.png" alt="DPD" width="50" height="30">
+                    </label>
+
+                    <input type="radio" class="btn-check" name="shippingMethod" id="InPost" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="InPost">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/InPost_logo.svg/1280px-InPost_logo.svg.png" alt="InPost" width="50" height="30">
+                    </label>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="paymentMethod" class="form-label">Rodzaj płatności</label>
-                <select class="form-select" id="paymentMethod" required>
-                    <option value="">Wybierz rodzaj płatności</option>
-                    <option value="karta">Karta</option>
-                    <option value="blik">BLIK</option>
-                    <option value="pośrednik">Pośrednik płatności</option>
-                </select>
+                <div id="paymentMethod" class="btn-group" role="group" aria-label="Rodzaj płatności">
+                    <input type="radio" class="btn-check" name="paymentMethod" id="card" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/989px-Mastercard-logo.svg.png" alt="Card" width="50" height="30">
+                    </label>
+
+                    <input type="radio" class="btn-check" name="paymentMethod" id="blik" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="blik">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0a/Blik_logo.svg/1200px-Blik_logo.svg.png" alt="Blik" width="50" height="30">
+                    </label>
+
+                    <input type="radio" class="btn-check" name="paymentMethod" id="intermediary" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="intermediary">
+                        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/intermediary-2367156-2010457.png" alt="Intermediary" width="50" height="30">
+                    </label>
+                </div>
             </div>
 
             <!-- Dodatkowe pola, np. dane do faktury -->
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1">
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="vatUE">
                 <label class="form-check-label" for="vatUE">VAT UE</label>
